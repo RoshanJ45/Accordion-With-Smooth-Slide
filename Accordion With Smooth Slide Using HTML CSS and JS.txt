@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .accordion {
+            width: 300px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .a-section {
+            cursor: pointer;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+            transition: background-color 0.3s ease;
+        }
+        .a-section:hover {
+            background-color: #555;
+        }
+        .a-content {
+            padding: 0 15px;
+            background-color: #222;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .a-content p {
+            margin: 10px 0;
+        }
+        .active .a-content {
+            max-height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="accordion">
+        <div class="a-section">
+            <h3>Section 1</h3>
+            <div class="a-content">
+                <p>This is the content of section 1. It expands when you click on the section title.</p>
+            </div>
+        </div>
+        <div class="a-section">
+            <h3>Section 2</h3>
+            <div class="a-content">
+                <p>This is the content of section 2. Click to reveal more details.</p>
+            </div>
+        </div>
+        <div class="a-section">
+            <h3>Section 3</h3>
+            <div class="a-content">
+                <p>This is the content of section 3. Click on the title to collapse or expand.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const sections = document.querySelectorAll('.a-section');
+
+
+        sections.forEach(section => {
+            section.addEventListener('click', () => {
+                section.classList.toggle('active');
+                sections.forEach(otherSection => {
+                    if (otherSection !== section) {
+                        otherSection.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
